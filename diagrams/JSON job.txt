@@ -1,0 +1,17 @@
+title JSON Source
+
+participantgroup #cce6ff Input
+participant file.json
+end
+
+participantgroup #e6e6e6 Item Reader
+participant reader
+end 
+
+participantgroup #e6fff2 Item Processor
+participant processor
+end 
+
+participantgroup #e6e6ff Item Writer
+participant writer
+end

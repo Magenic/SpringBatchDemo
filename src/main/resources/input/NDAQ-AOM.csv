@@ -1,0 +1,2 @@
+soup_partition,soup_sequence,msg_type,symbol_locate,unique_timestamp,order_id,side,quantity,symbol,price,mpid
+0,123,F,789,48387436843,4567,B,500,ZVZZT,200,ABC

@@ -1,0 +1,68 @@
+<quandl-response>
+<datatable>
+<data type="array">
+<datum type="array">
+<datum type="integer">0</datum>
+<datum type="integer">123</datum>
+<datum>F</datum>
+<datum type="integer">789</datum>
+<datum type="integer">48387436843</datum>
+<datum type="integer">4567</datum>
+<datum>B</datum>
+<datum type="integer">500</datum>
+<datum>ZVZZT</datum>
+<datum type="integer">200</datum>
+<datum>ABC</datum>
+</datum>
+</data>
+<columns type="array">
+<column>
+<name>soup_partition</name>
+<type>Integer</type>
+</column>
+<column>
+<name>soup_sequence</name>
+<type>Integer</type>
+</column>
+<column>
+<name>msg_type</name>
+<type>text</type>
+</column>
+<column>
+<name>symbol_locate</name>
+<type>Integer</type>
+</column>
+<column>
+<name>unique_timestamp</name>
+<type>Integer</type>
+</column>
+<column>
+<name>order_id</name>
+<type>Integer</type>
+</column>
+<column>
+<name>side</name>
+<type>text</type>
+</column>
+<column>
+<name>quantity</name>
+<type>Integer</type>
+</column>
+<column>
+<name>symbol</name>
+<type>text</type>
+</column>
+<column>
+<name>price</name>
+<type>Integer</type>
+</column>
+<column>
+<name>mpid</name>
+<type>text</type>
+</column>
+</columns>
+</datatable>
+<meta>
+<next-cursor-id nil="true"/>
+</meta>
+</quandl-response>
