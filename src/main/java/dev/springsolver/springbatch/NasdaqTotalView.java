@@ -1,17 +1,29 @@
 package dev.springsolver.springbatch;
 
+import java.sql.Date;
+
 public class NasdaqTotalView {
-    private Integer soupPartition;
+
     private Integer soupSequence;
-    private String msgType;
     private Integer symbolLocate;
-    private Integer uniqueTimestamp;
+    private Integer soupPartition;
+    private Long uniqueTimestamp;
+    private String msgType;
     private Integer orderId;
     private String side;
-    private Integer quantity;
     private String symbol;
+    private Integer quantity;
     private Integer price;
     private String mpid;
+    
+
+    public NasdaqTotalView() {
+
+    }
+
+    public NasdaqTotalView(Integer soupSequence, Integer symbolLocate, Integer soupPartition, Long uniqueTimestamp, String msgType, Integer orderId, String side, String symbol, Integer quantity, Integer price, String mpid) {
+    }
+
 
     public Integer getSoupPartition() {
         return soupPartition;
@@ -33,7 +45,7 @@ public class NasdaqTotalView {
         return msgType;
     }
 
-    public void setMsgType(String msgType) {
+    public void setMsgType() {
         this.msgType = msgType;
     }
 
@@ -45,11 +57,11 @@ public class NasdaqTotalView {
         this.symbolLocate = symbolLocate;
     }
 
-    public Integer getUniqueTimestamp() {
+    public Long getUniqueTimestamp() {
         return uniqueTimestamp;
     }
 
-    public void setUniqueTimestamp(Integer uniqueTimestamp) {
+    public void setUniqueTimestamp(Long uniqueTimestamp) {
         this.uniqueTimestamp = uniqueTimestamp;
     }
 
@@ -101,10 +113,10 @@ public class NasdaqTotalView {
         this.mpid = mpid;
     }
 
-    public NasdaqTotalView() {}
+    public NasdaqTotalView(int record_id, int soup_partition, int soup_sequence, String msg_type, int symbol_locate, Date unique_timestamp, int order_id, String side, int quantity, String mpid, String symbol, int price) {}
 
     public NasdaqTotalView(Integer rowId, Integer soupPartition, Integer soupSequence, String msgType,
-                           Integer symbolLocate, Integer uniqueTimestamp, Integer orderId, String side,
+                           Integer symbolLocate, Long uniqueTimestamp, Integer orderId, String side,
                            Integer quantity, String mpid, String symbol, Integer price) {
         this.soupPartition = soupPartition;
         this.soupSequence = soupSequence;

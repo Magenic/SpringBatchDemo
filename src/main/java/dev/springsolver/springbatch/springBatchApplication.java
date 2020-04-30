@@ -9,5 +9,4 @@ public class springBatchApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(springBatchApplication.class, args);
 	}
-
 }

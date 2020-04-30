@@ -1,6 +1,7 @@
 package dev.springsolver.springbatch;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -30,6 +31,7 @@ import javax.sql.DataSource;
 public class SpringBatchConfiguration {
     private static final String INPUT_FILE_DIRECTORY = "src/main/resources/input/";
     private static final String OUTPUT_FILE_DIRECTORY = "build/output/";
+    private static final Logger log = LoggerFactory.getLogger(SpringBatchConfiguration.class);
 
     @Autowired
     public JobBuilderFactory jobBuilderFactory;
@@ -37,13 +39,14 @@ public class SpringBatchConfiguration {
     @Autowired
     public StepBuilderFactory stepBuilderFactory;
 
+
     @Bean(destroyMethod="")
     @Retryable(value = {ItemStreamException.class}, maxAttempts=5)
     @Scope()
     public JsonItemReader<NasdaqTotalView> jsonItemReader() {
         return new JsonItemReaderBuilder<NasdaqTotalView>()
                 .jsonObjectReader(new JacksonJsonObjectReader<>(NasdaqTotalView.class))
-                .resource(new ClassPathResource("input/simple.json"))
+                .resource(new ClassPathResource("input/NDAQ-AOM.json"))
                 .name("ndaqJsonItemReader")
                 .build();
     }
@@ -57,11 +60,8 @@ public class SpringBatchConfiguration {
     public JdbcBatchItemWriter<NasdaqTotalView> writer(DataSource dataSource) {
         return new JdbcBatchItemWriterBuilder<NasdaqTotalView>()
                 .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-                .sql("INSERT INTO nasdaq_totalview (soupPartition, soupSequence, msgType, symbolLocate, " +
-                        "uniqueTimestamp, orderId, side, quantity, symbol, price,\n" +
-                        "             mpid) VALUES (:soupPartition, :soupSequence, :msgType, :symbolLocate, " +
-                        ":uniqueTimestamp, :orderId, :side, :quantity, :symbol, :price,\n" +
-                        "             :mpid)")
+                .sql("INSERT INTO nasdaq_totalview (soup_partition, soup_sequence, msg_type, symbol_locate, " +
+                        "unique_timestamp, order_id, side, quantity, mpid, symbol, price) VALUES (:soupPartition, :soupSequence, :msgType, :symbolLocate, :uniqueTimestamp, :orderId, :side, :quantity, :mpid, :symbol, :price)")
                 .dataSource(dataSource)
                 .build();
     }
@@ -85,4 +85,5 @@ public class SpringBatchConfiguration {
                 .writer(writer)
                 .build();
     }
+
 }
