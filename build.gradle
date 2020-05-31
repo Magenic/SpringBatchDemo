@@ -8,19 +8,21 @@ group = 'dev.springsolver'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-repositories {
-	mavenCentral()
-}
-
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-batch'
 	runtimeOnly 'org.hsqldb:hsqldb'
+	testCompile group: 'org.hsqldb', name: 'hsqldb', version: '2.5.0'
+
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.1.8.RELEASE'
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	testImplementation 'org.springframework.batch:spring-batch-test'
+}
+
+repositories {
+	mavenCentral()
 }
 
 test {
